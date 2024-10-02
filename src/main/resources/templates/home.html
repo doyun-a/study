@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>약 검색</title>
+</head>
+<body>
+<h1>약 검색</h1>
+<form action="/search" method="get">
+    <input type="text" name="name" placeholder="약 이름 입력" required />
+    <button type="submit">검색</button>
+</form>
+
+<h2>검색 결과:</h2>
+<ul>
+    <li th:each="pill : ${pills}">
+        <span th:text="${pill.itemName}">약 이름</span> -
+        <span th:text="${pill.itemSeq}">약 코드</span>
+
+        <!-- 약 정보 버튼 추가 -->
+        <a th:href="@{'/pill/' + ${pill.id}}">약 정보</a>
+    </li>
+</ul>
+</body>
+</html>

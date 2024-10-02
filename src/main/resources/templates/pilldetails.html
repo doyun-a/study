@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>약 정보</title>
+</head>
+<body>
+<h1>약 정보</h1>
+
+<div>
+    <label>약 이름: </label>
+    <span th:text="${pill.itemName}">약 이름</span>
+</div>
+<div>
+    <label>약 코드: </label>
+    <span th:text="${pill.itemSeq}">약 코드</span>
+</div>
+    <label>약 효능: </label>
+    <span th:text="${pill.efcyQesitm}">약 코드</span>
+</div>
+<div>
+    <label>약 사용법: </label>
+    <span th:text="${pill.useMethodQesitm}">약 코드</span>
+</div>
+<div>
+    <label>주의사항경고: </label>
+    <span th:text="${pill.atpnWarnQesitm}">약 코드</span>
+    <span th:text="${pill.atpnQesitm}">약 코드</span>
+</div>
+<div>
+    <label>상호작용: </label>
+    <span th:text="${pill.intrcQesitm}">약 코드</span>
+</div>
+<div>
+    <label>부작용: </label>
+    <span th:text="${pill.seQesitm}">약 코드</span>
+</div>
+<div>
+    <label>보관법: </label>
+    <span th:text="${pill.depositMethodQesitm}">약 코드</span>
+</div>
+
+
+<!-- 여기서 약의 다른 세부 정보도 추가 가능 -->
+
+<a href="/search">뒤로 가기</a>
+</body>
+</html>
