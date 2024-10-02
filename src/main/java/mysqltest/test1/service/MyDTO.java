@@ -8,4 +8,11 @@ public class MyDTO {
 
     private String itemName;
     private String ItemSeq;
+    private String efcyQesitm;
+    private String useMethodQesitm;
+    private String atpnWarnQesitm;
+    private String atpnQesitm;
+    private String intrcQesitm;
+    private String seQesitm;
+    private String depositMethodQesitm;
 }
