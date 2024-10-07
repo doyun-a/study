@@ -1,24 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>약 검색</title>
+    <title>Search</title>
+
+</head>
 </head>
 <body>
-<h1>약 검색</h1>
-<form action="/search" method="get">
-    <input type="text" name="name" placeholder="약 이름 입력" required />
-    <button type="submit">검색</button>
+<h1>Search for a product</h1>
+
+
+<div th:if="${warningMessage != null}">
+    <script th:inline="javascript">
+        // 서버에서 전달된 warningMessage를 자바스크립트로 표시
+        alert([[${warningMessage}]]);
+    </script>
+</div>
+
+<div th:if="${Message != null}">
+    <script th:inline="javascript">
+
+        alert([[${Message}]]);
+    </script>
+</div>
+
+<!-- 검색 폼 -->
+<form action="#" th:action="@{/search}" method="get">
+    <input type="text" name="keyword" placeholder="Enter product name" th:value="${keyword}" />
+    <button type="submit">Search</button>
 </form>
 
-<h2>검색 결과:</h2>
-<ul>
-    <li th:each="pill : ${pills}">
-        <span th:text="${pill.itemName}">약 이름</span> -
-        <span th:text="${pill.itemSeq}">약 코드</span>
+<!-- 검색 결과가 있는 경우 -->
+<div th:if="${results != null}">
+    <h2>Results for "<span th:text="${keyword}"></span>":</h2>
+    <ul>
+        <!-- 검색 결과를 리스트로 출력 -->
+        <li th:each="result : ${results}">
+            <span th:text="${result}"></span>
+            <form th:action="@{/register}" method="get" >
+                <input type="hidden" name="drugName" th:value="${result}" />
+                <button type="submit">등록</button>
+            </form>
+        </li>
+    </ul>
+</div>
 
-        <!-- 약 정보 버튼 추가 -->
-        <a th:href="@{'/pill/' + ${pill.id}}">약 정보</a>
-    </li>
-</ul>
+
+
+
+<!-- 검색 결과가 없는 경우 -->
+<div th:if="${results != null && results.isEmpty()}">
+    <h3>No results found for "<span th:text="${keyword}"></span>".</h3>
+</div>
+
+
+
+
 </body>
 </html>
